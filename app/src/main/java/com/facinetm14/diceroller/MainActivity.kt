@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -12,33 +11,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnRoll : Button = findViewById(R.id.btn_roll);
-        var imgDice : ImageView = findViewById(R.id.img_dice);
+        val btnRoll : Button = findViewById(R.id.btn_roll)
+        val imgDice : ImageView = findViewById(R.id.img_dice)
+        val listOfImages = listOf(
+            R.drawable.dice_1,
+            R.drawable.dice_2,
+            R.drawable.dice_3,
+            R.drawable.dice_4,
+            R.drawable.dice_5,
+            R.drawable.dice_6
+            )
 
         btnRoll.setOnClickListener {
-            val dice = Dice(6);
-            dice.roll(imgDice);
-            val myToast = Toast.makeText(this, "dice rolled", Toast.LENGTH_SHORT);
-            myToast.show();
+            val dice = Dice(6)
+            val numberRolled = dice.rollNumber()
+            imgDice.setImageResource(listOfImages[numberRolled-1])
+
+            // Showing the short message
+            val myToast : Toast = Toast.makeText(this,"Dice rolled", Toast.LENGTH_SHORT)
+            myToast.show()
         }
 
     }
-}
-
-class Dice (private val sides : Int) {
-
-    fun roll(imgDice: ImageView) {
-
-        when((1..sides).random()) {
-            1-> imgDice.setImageResource(R.drawable.dice_1);
-            2-> imgDice.setImageResource(R.drawable.dice_1);
-            3-> imgDice.setImageResource(R.drawable.dice_1);
-            4-> imgDice.setImageResource(R.drawable.dice_1);
-            5-> imgDice.setImageResource(R.drawable.dice_1);
-            6-> imgDice.setImageResource(R.drawable.dice_1);
-
-        }
-    }
-
-
 }

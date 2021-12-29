@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/img_dice"
-        android:layout_width="172dp"
-        android:layout_height="206dp"
+        android:layout_width="160dp"
+        android:layout_height="200dp"
         android:layout_marginTop="187dp"
         android:contentDescription="@string/dice_1"
         app:layout_constraintEnd_toEndOf="parent"
