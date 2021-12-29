@@ -3,6 +3,7 @@ package com.facinetm14.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -12,11 +13,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnRoll : Button = findViewById(R.id.btn_roll);
-        var textRolled : TextView = findViewById(R.id.text_rolled);
+        var imgDice : ImageView = findViewById(R.id.img_dice);
 
         btnRoll.setOnClickListener {
             val dice = Dice(6);
-            textRolled.text = "${dice.roll()}";
+            dice.roll(imgDice);
             val myToast = Toast.makeText(this, "dice rolled", Toast.LENGTH_SHORT);
             myToast.show();
         }
@@ -24,10 +25,20 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class Dice (val sides : Int) {
+class Dice (private val sides : Int) {
 
-    fun roll() : Int{
-        return (1..sides).random();
+    fun roll(imgDice: ImageView) {
+
+        when((1..sides).random()) {
+            1-> imgDice.setImageResource(R.drawable.dice_1);
+            2-> imgDice.setImageResource(R.drawable.dice_1);
+            3-> imgDice.setImageResource(R.drawable.dice_1);
+            4-> imgDice.setImageResource(R.drawable.dice_1);
+            5-> imgDice.setImageResource(R.drawable.dice_1);
+            6-> imgDice.setImageResource(R.drawable.dice_1);
+
+        }
     }
+
 
 }
